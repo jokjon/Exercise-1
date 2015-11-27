@@ -34,9 +34,19 @@ Module for testing exception handling
 # Raising Exceptions #
 ######################
 
+from ex1.functions import search_n as f_search_n
+
+
 # Use the function search_n from the functions module inside a new function
 # also named search_n. The function should do the same as functions.search_n
 # but if the variable is not found in the list then raise a ValueError.
+def search_n(l, x):
+    s = f_search_n(l,x)
+    if s == (None, None):
+        raise ValueError
+    else:
+        return s
+
 
 ########################
 # Excepting Exceptions #
@@ -46,3 +56,10 @@ Module for testing exception handling
 # the first by the second. This function should handle exceptions that might
 # occur print out what went wrong and return None if no results could be
 # computed.
+def safe_divide(a, b):
+    try:
+        return a/b
+    except TypeError:
+        return None
+    except ZeroDivisionError:
+        return None

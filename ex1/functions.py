@@ -46,15 +46,26 @@ def f():
 ##############################
 
 # Define a function named add that takes two numbers and returns the sum.
+def add(x, y):
+    return x+y
+
 
 # Define a function named to_tuple that takes three arguments and returns a
 # tuple of these three arguments.
+def to_tuple(x, y, z):
+    return x, y, z
+
 
 # Define a function named check5 that checks if a number is greater than 5 and
 # returns True or False.
+def check5(x):
+    return x > 5
+
 
 # Define a function named check_n that check is a number is greater than n. The
 # number should be the first argument and n the second
+def check_n(x, n):
+    return x > n
 
 #########
 # LISTS #
@@ -65,23 +76,50 @@ def f():
 # compare against. The function should return a list with equal length as the
 # input list containing for each number in the original list either True or
 # False if the number was greater than or equal to n.
+def check_list(l, n):
+    r = []
+    for e in l:
+        r.append(e >= n)
+    return r
+
 
 # Define a function named check_list_nth that does the same as check_list but
 # uses every nth element of the input list (including the first one). You will
 # need a third input argument.
+def check_list_nth(l, n, i):
+    r = []
+    for e in l[::i]:
+        r.append(e >= n)
+    return r
+
 
 # Define a function named add_new_list that takes two inputs. A list l and a
 # second variable x to add to the list. Return a new list containing x as the
 # last element without modifying the original list.
+def add_new_list(l, x):
+    r = l.copy()
+    r.append(x)
+    return r
 
 # Define a function named remove_nth that takes a list and removes every nth
 # element (including the first one). Use a keyword named nth to set the default
 # value for nth to 2.
+def remove_nth(l, nth = 2):
+    r = l.copy()
+    del r[::nth]
+    return r
+
 
 # Define a function named search_n that takes a list and a variable x and
 # searches for x in the list. If the variable is found return the index of the
 # variable in the list and the variable. Otherwise use None for both return
 # values
+def search_n(l, x):
+    for idx, val in enumerate(l):
+        if val == x:
+            return idx, val
+    return None, None
+
 
 ################
 # Dictionaries #
@@ -90,26 +128,66 @@ def f():
 # Define a function named args_to_dict that takes three arguments and returns a
 # dictionary with the position of the argument as the key (starting at 0) and
 # the argument as the value.
+def args_to_dict(x, y, z):
+    return {0: x, 1: y, 2: z}
+
 
 # BONUS: Write a function named args_to_dict_general that does the same for any
 # number of arguments
+def args_to_dict_general(*l):
+    r = {}
+    i = 0
+    for e in l:
+        r[i] = e
+        i += 1
+    return r
+
 
 # Define a function named lists_to_dict that takes two lists of equal lenght
 # named keys and values and builds a dictionary out of them.
+def lists_to_dict(ln, lv):
+    return dict(zip(ln, lv))
+
 
 # Define a function named search_list that takes two lists a and b. The
 # function searches for all elements of b in list a. The return value should be
 # a dictionary containing the index of the found element of b in list a and the
 # value of the found element. If nothing was found then return an empty
 # dictionary.
+def search_list(a, b):
+    r = {}
+    for i, e in enumerate(a):
+        if e in b:
+            r[i] = e
+    return r
+
 
 # Define a function named dict_to_string that takes a dictionary and a
 # separator string. The function should only take elements out of the
 # dictionary whose value is a string and then return a single string containing
 # the strings stored in the dictionary seperated by the separator string.
 # Return an empty string if there are no strings in the dictionary.
+def dict_to_string(d, s):
+    r = '';
+    for v in d.values():
+        if isinstance(v, str):
+            r += v + s
+    return r[:-1]
+
 
 # Define a function named classify_by_type which takes a list l and returns a
 # dictionary d. The d must have the keys 'int' and 'str' which contain the
 # elements out of l that have this type. Elements that do not fit one of these
 # two types should be stored in a list under the key 'others'
+def classify_by_type(l):
+    s = []
+    i = []
+    o = []
+    for e in l:
+        if isinstance(e, int):
+            i.append(e)
+        elif isinstance(e, str):
+            s.append(e)
+        else:
+            o.append(e)
+    return {'str': s, 'int': i, 'others': o}
