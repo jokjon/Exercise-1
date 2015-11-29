@@ -36,14 +36,25 @@ from datetime import date
 
 # Define a function named last_of_month that takes an argument dt of type date
 # and returns a date object representing the last day of the month dt was in.
+
 def last_of_month(dt):
+    '''
+    :type dt: datetime.date
+    :return a date object which contains the last day of this month
+    '''
     return date(dt.year, dt.month, monthrange(dt.year, dt.month)[1])
 
 
 # Define a function named feed_the_gremlin which takes a time object as an
 # argument. It should return False between midnight and 6:30AM and True
 # otherwise.
+
+#
 def feed_the_gremlin(t):
+    '''
+    :type t: time
+    :return True if the input time is good to feed the gremlins otherwise False
+    '''
     return not(t.hour < 6 or (t.hour == 6 and t.minute < 30))
 
 
@@ -53,6 +64,11 @@ def feed_the_gremlin(t):
 # "01 days, 01 minutes, 01 seconds until 2000-12-31 15:59:59"
 # If ref is before dt then use 'since' instead of 'until'
 def how_long(dt, ref):
+    '''
+    :type dt: date
+    :type ref: date
+    :return a string with the time difference
+    '''
     if dt > ref:
         d = dt - ref
         out = "{} days, {} minutes, {} seconds since {}".format(d.days, d.seconds//60, d.seconds%60, ref)

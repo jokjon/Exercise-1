@@ -41,7 +41,12 @@ from ex1.functions import search_n as f_search_n
 # also named search_n. The function should do the same as functions.search_n
 # but if the variable is not found in the list then raise a ValueError.
 def search_n(l, x):
-    s = f_search_n(l,x)
+    '''
+    :param l: list with objects
+    :param x: searched object
+    :return: the index of the variable in the list and the variable, throws ValueError if the object was not found
+    '''
+    s = f_search_n(l, x)
     if s == (None, None):
         raise ValueError
     else:
@@ -57,6 +62,11 @@ def search_n(l, x):
 # occur print out what went wrong and return None if no results could be
 # computed.
 def safe_divide(a, b):
+    '''
+    :param a: dividend
+    :param b: divisor
+    :return: quotient, throws TypeError if the a param object has a wrong type, throws ZeroDivisionError if b=0
+    '''
     try:
         return a/b
     except TypeError:
